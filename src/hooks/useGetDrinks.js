@@ -5,13 +5,17 @@ const useGetDrinks = ()=>{
     const [state, setState] = useState([]);
     useEffect(()=>{
         async function getDrinks(){
-            const res = await fetch(API);
-            const { drinks } = await res.json();
-            const drinksWithPrice = drinks.map(drink=>({
-                ...drink,
-                price: parseInt(10*Math.random()) + 1
-            }))
-            setState(drinksWithPrice);
+            try {
+                const res               = await fetch(API);
+                const { drinks }        = await res.json();
+                const drinksWithPrice   = drinks.map(drink=>({
+                    ...drink,
+                    price: parseInt(10*Math.random()) + 1
+                }));
+                setState(drinksWithPrice);
+            } catch (err) {
+                console.error(err);
+            }
         }
         getDrinks();
     },[])
