@@ -5,7 +5,8 @@ const Dotenv       = require('dotenv-webpack');
 /** @type {import('webpack').Configuration} */
 module.exports = {
   output:{
-    filename: 'app.js'
+    filename: 'app.js',
+    publicPath: '/'
   },
   plugins:[
     new HtmlWebpackPlugin({
