@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-    openModal:false
+    openModal:false,
+    openOrders: false
 }
 
 export const uiSlice = createSlice({
@@ -11,9 +12,12 @@ export const uiSlice = createSlice({
         toogleModal:(state,action)=>{
             state.openModal = !state.openModal
         },
+        toggleOrders:(state,action)=>{
+            state.openOrders = !state.openOrders
+        }
     }
 })
 
-export const { toogleModal } = uiSlice.actions;
+export const { toogleModal, toggleOrders } = uiSlice.actions;
 
 export const uiReducer = uiSlice.reducer;

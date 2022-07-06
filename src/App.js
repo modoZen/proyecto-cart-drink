@@ -1,16 +1,19 @@
 import React from "react"
-import { ProductList } from "./components/ProductList";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "./Layout";
-import { useSelector } from 'react-redux'
-import { Modal } from "./components/Modal";
+import { Home } from "./pages/Home";
+import { Successful } from "./pages/Successful";
 
 const App = ()=>{
-    const openModal = useSelector(state=>state.ui.openModal);
     return(
-        <Layout>
-            <ProductList />
-            {openModal && (<Modal />)}
-        </Layout>
+        <BrowserRouter>
+            <Layout>
+                <Routes>
+                    <Route path="/"             element={<Home />} />
+                    <Route path="successful"    element={<Successful />} />
+                </Routes>
+            </Layout>
+        </BrowserRouter>
     )
 }
 

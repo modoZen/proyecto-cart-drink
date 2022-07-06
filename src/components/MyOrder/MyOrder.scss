@@ -59,6 +59,11 @@
 	font-weight: bold;
 	height: 50px;
 }
+
+.primary-button:disabled{
+	background-color: var(--very-light-pink);
+}
+
 @media (max-width: 640px) {
 	.MyOrder {
 		width: 100%;

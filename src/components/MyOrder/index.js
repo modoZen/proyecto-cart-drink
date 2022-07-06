@@ -1,10 +1,20 @@
 import React,  { useContext }  from 'react';
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
+import { toggleOrders, toogleModal } from '../../store/uiReducer';
 import { OrderItem } from '../OrderItem';
 import './MyOrder.scss';
 
 const MyOrder = () => {
+	const distpach = useDispatch();
     const cart = useSelector(state=>state.cart.list);
+	const navigate = useNavigate();
+
+	const clickHandler = ()=>{
+		console.log('lml');
+		distpach(toggleOrders())
+		navigate('/successful');
+	}
 
 	const sumTotal = ()=>{
 		const reducer = (accumulator, currentValue) => accumulator+ currentValue.price;
@@ -26,9 +36,9 @@ const MyOrder = () => {
 					</p>
 					<p>${sumTotal()}</p>
 				</div>
-				{/* <button className="primary-button">
-					Checkout
-				</button> */}
+				<button onClick={clickHandler} className="primary-button" disabled={cart.length === 0}>
+					Hacer pedido
+				</button>
 			</div>
 		</aside>
 	);

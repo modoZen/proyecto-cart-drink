@@ -1,12 +1,18 @@
 import React, { useState, useContext } from 'react';
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { MyOrder } from '../MyOrder';
 import shoppingCart from '@icons/icon_shopping_cart.svg';
 import './Header.scss';
+import { toggleOrders } from '../../store/uiReducer';
+import { useLocation } from 'react-router-dom'
 
 const Header = () => {
-	const [toggleOrders, setToggleOrders] = useState(false);
+	const openOrders = useSelector(state=>state.ui.openOrders);
+	const distpach = useDispatch();
     const cart = useSelector(state=>state.cart.list);
+	const location = useLocation();
+
+	if(location.pathname === '/successful') return null;
 	return (
 		<nav>
 			<div className="navbar-left">
@@ -17,7 +23,7 @@ const Header = () => {
 				<ul>
 					<li 
                         className="navbar-shopping-cart" 
-                        onClick={()=>setToggleOrders(!toggleOrders)}
+                        onClick={()=>distpach(toggleOrders())}
                     >
 						<img 
                             src={shoppingCart} 
@@ -28,8 +34,7 @@ const Header = () => {
 					</li>
 				</ul>
 			</div>
-			{/* {toggle && <Menu />} */}
-			{toggleOrders && <MyOrder />}
+			{openOrders && <MyOrder />}
 		</nav>
 	);
 }

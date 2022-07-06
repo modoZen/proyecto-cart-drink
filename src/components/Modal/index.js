@@ -13,7 +13,6 @@ function Modal() {
     return ReactDOM.createPortal(
         <div className="ModalBackground">
             <form onSubmit={onSubmit}>
-                <p> </p>
                 <label>Ya elegio este producto</label>
                 <div className="TodoForm-buttonContainer">
                     <button
