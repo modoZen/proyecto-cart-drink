@@ -11,7 +11,6 @@ const MyOrder = () => {
 	const navigate = useNavigate();
 
 	const clickHandler = ()=>{
-		console.log('lml');
 		distpach(toggleOrders())
 		navigate('/successful');
 	}

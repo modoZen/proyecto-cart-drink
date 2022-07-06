@@ -15,7 +15,6 @@ export const cartSlice = createSlice({
             state.list = state.list.filter(item=>item.idDrink != action.payload.idDrink)
         },
         clearProducs:(state,action)=>{
-            console.log('funciona')
             state.list = []
         }
     }

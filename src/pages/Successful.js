@@ -9,7 +9,6 @@ const Successful = ()=>{
     const dispatch = useDispatch();
     const submitHandler = (event)=>{
         event.preventDefault();
-        console.info('lml');
         dispatch(clearProducs());
         navigate('/');
     }
@@ -18,7 +17,7 @@ const Successful = ()=>{
             <div className="form-container">
                 <form onSubmit={submitHandler} className="form">
                     <div>
-                        <p htmlFor="password" className="label">Orden pedida, espero por favor</p>
+                        <p htmlFor="password" className="label">Orden pedida, espere por favor</p>
                         <button type="submit" className="primary-button signup-button">Volver</button>
                     </div>
                 </form>
